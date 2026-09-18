@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thryve Sales Coaching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2B6444;
+      --secondary: #10C0D8;
+      --accent: #7048A8;
+      --dark: #1a1a1a;
+      --light: #f5f5f5;
+      --border: #e0e0e0;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      background: #fff;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    nav .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    nav .links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, rgba(43, 100, 68, 0.1) 0%, rgba(16, 192, 216, 0.1) 100%);
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .hero .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+
+    .hero .tagline {
+      font-size: 1.3rem;
+      color: #666;
+      margin-bottom: 2rem;
+      font-style: italic;
+      color: var(--primary);
+    }
+
+    .hero .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--light);
+    }
+
+    /* Content Sections */
+    .section {
+      padding: 4rem 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: var(--dark);
+    }
+
+    .section p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* Problem Grid */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .problem-card {
+      background: var(--light);
+      padding: 2rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .problem-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    /* Pillars */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .pillar {
+      text-align: center;
+    }
+
+    .pillar-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+    }
+
+    .pillar h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    /* Who Cards */
+    .who-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .who-card {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .who-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .who-card h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    /* Proof Section */
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .case-study {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .case-study .metric {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .case-study .quote {
+      font-style: italic;
+      color: #666;
+      margin: 1.5rem 0;
+      border-left: 3px solid var(--primary);
+      padding-left: 1rem;
+    }
+
+    /* Offers Section */
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .offer-card {
+      background: linear-gradient(135deg, rgba(43, 100, 68, 0.05) 0%, rgba(16, 192, 216, 0.05) 100%);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .offer-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+
+    .offer-card h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .offer-card .price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin: 1rem 0;
+    }
+
+    /* Partners Section */
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .partner-item h4 {
+      color: var(--primary);
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      color: white;
+    }
+
+    .cta-section p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Chatbot Widget */
+    .chat-trigger {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s;
+      z-index: 999;
+    }
+
+    .chat-trigger:hover {
+      transform: scale(1.1);
+    }
+
+    .chat-panel {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 380px;
+      max-height: 500px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+    }
+
+    .chat-panel.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1.5rem;
+      border-radius: 12px 12px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-header h3 {
+      font-size: 1.1rem;
+    }
+
+    .chat-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .message {
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      word-wrap: break-word;
+      font-size: 0.95rem;
+    }
+
+    .message.bot {
+      background: var(--light);
+      color: var(--dark);
+      align-self: flex-start;
+      max-width: 85%;
+    }
+
+    .message.user {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      align-self: flex-end;
+      max-width: 85%;
+    }
+
+    .chat-form {
+      padding: 1rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .chat-form input,
+    .chat-form textarea {
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .chat-form input:focus,
+    .chat-form textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(43, 100, 68, 0.1);
+    }
+
+    .chat-form textarea {
+      resize: none;
+      height: 60px;
+    }
+
+    .chat-form button {
+      padding: 0.75rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .chat-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav .links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .section h2 {
+        font-size: 1.8rem;
+      }
+
+      .chat-panel {
+        width: calc(100% - 2rem);
+        max-height: 60vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <div class="logo">thryve.</div>
+      <ul class="links">
+        <li><a href="#approach">Our Approach</a></li>
+        <li><a href="#who">Who For</a></li>
+        <li><a href="#proof">Proof</a></li>
+        <li><a href="#offers">Offers</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Better questions. Greater possibilities.</h1>
+      <p class="tagline">Sales coaching that actually works</p>
+      <div class="cta-buttons">
+        <button class="btn btn-primary" onclick="document.querySelector('.chat-trigger').click()">Start a conversation</button>
+        <button class="btn btn-secondary">Learn more</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="section">
+    <div class="container">
+      <h2>What's holding you back?</h2>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <h3>❌ Selling the same way for years</h3>
+          <p>Your pitch worked in 2019. It's 2025. Your buyers have changed, and so should you.</p>
+        </div>
+        <div class="problem-card">
+          <h3>❌ Leaving money on the table</h3>
+          <p>You know you could close more deals. You just don't know how or where to start.</p>
+        </div>
+        <div class="problem-card">
+          <h3>❌ Team isn't buying your playbook</h3>
+          <p>Great in theory. Doesn't stick when your team goes back to the field.</p>
+        </div>
+        <div class="problem-card">
+          <h3>❌ Generic advice doesn't fit your business</h3>
+          <p>Sales books don't know your market, your product, or your specific challenges.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach Section -->
+  <section class="section" id="approach">
+    <div class="container">
+      <h2>How we do it</h2>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🎯</div>
+          <h3>Diagnose</h3>
+          <p>We understand exactly what's working and what's not through conversations with you and your team.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📊</div>
+          <h3>Design</h3>
+          <p>Custom playbooks built for your business, your market, and your team's reality.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🚀</div>
+          <h3>Deploy</h3>
+          <p>Coaching that sticks. We make sure your team actually uses it and sees results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who For Section -->
+  <section class="section" id="who">
+    <div class="container">
+      <h2>This is for you if...</h2>
+      <div class="who-cards">
+        <div class="who-card">
+          <h3>Sales Leaders</h3>
+          <p>You lead a team, you're measured on quota, and you know your current approach isn't cutting it.</p>
+        </div>
+        <div class="who-card">
+          <h3>Founders & CEOs</h3>
+          <p>You're in every deal early. You need to close more and faster without burning out.</p>
+        </div>
+        <div class="who-card">
+          <h3>Growing Companies</h3>
+          <p>You're scaling, things are changing fast, and you need a sales process that actually works.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof Section -->
+  <section class="section" id="proof">
+    <div class="container">
+      <h2>Proof from the field</h2>
+      <div class="proof-grid">
+        <div class="case-study">
+          <div class="metric">3x</div>
+          <p><strong>Discovery effectiveness</strong></p>
+          <p class="quote">"We ask smarter questions now. Deals that felt stuck suddenly move."</p>
+          <p>— Mid-market SaaS VP Sales</p>
+        </div>
+        <div class="case-study">
+          <div class="metric">42%</div>
+          <p><strong>Faster closes</strong></p>
+          <p class="quote">"The coaching helped us see what was really slowing us down. We cut 2 weeks off our cycle."</p>
+          <p>— Enterprise AE Manager</p>
+        </div>
+        <div class="case-study">
+          <div class="metric">5+</div>
+          <p><strong>New skills deployed</strong></p>
+          <p class="quote">"The team actually uses this. It's because it was built for us, not some generic playbook."</p>
+          <p>— Growth-stage Founder</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Thryve Section -->
+  <section class="section">
+    <div class="container">
+      <h2>Why Thryve</h2>
+      <p style="text-align: center; font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
+        <em>"Most coaching is generic. It's supposed to work for everyone, so it works for no one. Thryve is different—we diagnose what's actually broken, design for your specific situation, and coach your team to actually use it."</em>
+      </p>
+      <p style="text-align: center; color: var(--primary); font-weight: 600; margin-top: 2rem;">— Andrew, Founder</p>
+    </div>
+  </section>
+
+  <!-- Offers Section -->
+  <section class="section" id="offers">
+    <div class="container">
+      <h2>How to work with us</h2>
+      <div class="offers-grid">
+        <div class="offer-card">
+          <h3>Sales Audit</h3>
+          <p class="description">We dig in. Interviews, data review, field observations.</p>
+          <div class="price">$2K</div>
+          <p>Perfect if you want to know exactly what needs fixing without the full engagement.</p>
+        </div>
+        <div class="offer-card">
+          <h3>Growth Sprint</h3>
+          <p class="description">4 weeks. One critical challenge. Your team transformed.</p>
+          <div class="price">$8K</div>
+          <p>Ideal if you have a specific problem (deal stalling, discovery weakness, close rates).</p>
+        </div>
+        <div class="offer-card">
+          <h3>Growth Partner</h3>
+          <p class="description">3–6 months of ongoing coaching and playbook deployment.</p>
+          <div class="price">Custom</div>
+          <p>For teams serious about lasting change. Full diagnosis, design, and team coaching.</p>
+        </div>
+        <div class="offer-card">
+          <h3>Fractional Sales Leadership</h3>
+          <p class="description">I'm part of your leadership team.</p>
+          <div class="price">Custom</div>
+          <p>For CEOs and founders who need a sales leader without the overhead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beyond Section -->
+  <section class="section">
+    <div class="container">
+      <h2>Beyond the core</h2>
+      <p style="text-align: center; font-size: 1.05rem; max-width: 800px; margin: 0 auto 2rem;">
+        We partner with specialists in hiring, systems, and operations to help scale your sales function the right way.
+      </p>
+      <div class="partners-grid">
+        <div class="partner-item">
+          <div style="font-size: 3rem;">👥</div>
+          <h4>Hiring & Culture</h4>
+        </div>
+        <div class="partner-item">
+          <div style="font-size: 3rem;">⚙️</div>
+          <h4>CRM & Tools</h4>
+        </div>
+        <div class="partner-item">
+          <div style="font-size: 3rem;">📈</div>
+          <h4>Analytics & Metrics</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Let's fix your sales</h2>
+      <p>Start with a conversation. Tell us what's on your mind.</p>
+      <button class="btn btn-secondary" onclick="document.querySelector('.chat-trigger').click()">Open chat</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Thryve Sales Coaching. Better questions. Greater possibilities.</p>
+      <p>Questions? <a href="mailto:hello@thryvecoaching.io" style="color: var(--secondary); text-decoration: none;">hello@thryvecoaching.io</a></p>
+    </div>
+  </footer>
+
+  <!-- Chatbot Widget -->
+  <button class="chat-trigger" id="chatTrigger">💬</button>
+  
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <h3>Thryve Coach</h3>
+      <button class="chat-close" onclick="closeChat()">×</button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <form class="chat-form" id="chatForm">
+      <input type="text" id="chatName" placeholder="Your name" required>
+      <input type="text" id="chatCompany" placeholder="Company (optional)">
+      <textarea id="chatEnquiry" placeholder="What's on your mind?" required></textarea>
+      <button type="submit">Send enquiry</button>
+    </form>
+  </div>
+
+  <script>
+    const chatTrigger = document.getElementById('chatTrigger');
+    const chatPanel = document.getElementById('chatPanel');
+    const chatForm = document.getElementById('chatForm');
+    const chatMessages = document.getElementById('chatMessages');
+
+    function toggleChat() {
+      chatPanel.classList.toggle('open');
+      if (chatPanel.classList.contains('open')) {
+        chatMessages.innerHTML = '';
+        addMessage('Hey there! 👋 What brings you here today?', 'bot');
+      }
+    }
+
+    function closeChat() {
+      chatPanel.classList.remove('open');
+    }
+
+    function addMessage(text, sender) {
+      const message = document.createElement('div');
+      message.className = `message ${sender}`;
+      message.textContent = text;
+      chatMessages.appendChild(message);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    chatTrigger.addEventListener('click', toggleChat);
+
+    document.addEventListener('click', (e) => {
+      if (!chatPanel.contains(e.target) && !chatTrigger.contains(e.target)) {
+        closeChat();
+      }
+    });
+
+    chatForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('chatName').value;
+      const company = document.getElementById('chatCompany').value;
+      const enquiry = document.getElementById('chatEnquiry').value;
+
+      addMessage(enquiry, 'user');
+      addMessage('Sending your enquiry...', 'bot');
+
+      try {
+        const response = await fetch('/api/enquiry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, company, enquiry })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          addMessage(`Thanks ${name}! I've passed this along to Andrew. He'll be in touch soon. 🙌`, 'bot');
+          chatForm.reset();
+          setTimeout(closeChat, 3000);
+        } else {
+          addMessage('Oops, something went wrong. Please try again.', 'bot');
+        }
+      } catch (error) {
+        addMessage('Connection error. Please try again.', 'bot');
+        console.error('Error:', error);
+      }
+    });
+  </script>
+</body>
+</html>
